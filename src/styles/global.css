@@ -1,1 +1,13 @@
 @import "tailwindcss";
+@import "./theme.css";
+@import "./fonts.css";
+
+@layer base {
+  * {
+    @apply box-border;
+  }
+
+  html, body {
+    @apply w-screen min-h-screen bg-gruvbox-bg0 text-gruvbox-fg0 font-proximanova font-light;
+  }
+}

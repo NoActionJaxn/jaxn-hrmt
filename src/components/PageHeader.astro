@@ -1,0 +1,23 @@
+---
+import AnimatedLogo from './react/AnimatedLogo.tsx';
+import { ROUTES } from '../constants/routes.ts';
+---
+
+<header class="fixed top-10 left-12 right-12 flex justify-between items-center z-10">
+  <div>
+    <AnimatedLogo client:only="preact" className="text-2xl" />
+  </div>
+  <div>
+    <nav class="pr-1">
+      <ul class="space-x-2 text-lg font-bold">
+        {Object.entries(ROUTES).map(([_, route]) => (
+          <li class="inline">
+            <a href={route.path()} class="hover:underline">
+              {route.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+</header>

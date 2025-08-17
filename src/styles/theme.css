@@ -1,7 +1,7 @@
 @theme {
-  --font-oswald: "Oswald", sans-serif;
-  --font-quicksand: "Quicksand", sans-serif;
-  --default-font-family: var(--font-quicksand);
+  --font-gnuolane: "Gnuolane", sans-serif;
+  --font-proximanova: "Proxima Nova", sans-serif;
+  --default-font-family: var(--font-proximanova);
 
   --color-gruvbox-bg0: #FFFFFC;
   --color-gruvbox-bg1: #fdfbe6;
