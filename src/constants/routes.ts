@@ -7,14 +7,10 @@ export const ROUTES: Record<string, Route> = {
   },
   work: { 
     label: "Work", 
-    path: () => "/projects" 
+    path: () => "/work"
   },
   about: { 
     label: "About", 
     path: () => "/about" 
-  },
-  contact: { 
-    label: "Contact",
-    path: () => "/contact"
   },
 };

@@ -1,7 +1,5 @@
 import { useState, useEffect, useRef } from "preact/hooks";
-
-const SCRAMBLE_CHARS =
-  "!@#$%^&*()-_=+[]{}<>?/\\|~ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+import { SCRAMBLE_CHARS } from "../../../constants/scrambleChars";
 
 /**
  * Returns a random character from the scramble set.

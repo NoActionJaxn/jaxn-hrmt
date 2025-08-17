@@ -1,11 +1,10 @@
-import { type FC } from 'preact/compat';
 import { ROUTES } from '../../constants/routes';
 
 type LogoProps = {
   className?: string;
 }
 
-const Logo: FC<LogoProps> = ({className}) => {
+export default function Logo({className}: LogoProps) {
   return (
     <div>
       <a
@@ -19,5 +18,3 @@ const Logo: FC<LogoProps> = ({className}) => {
     </div>
   );
 };
-
-export default Logo;

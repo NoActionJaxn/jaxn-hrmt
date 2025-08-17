@@ -3,6 +3,7 @@ import PageContent from "../components/PageContent.astro";
 import PageFooter from "../components/PageFooter.astro";
 import PageFrame from "../components/PageFrame.astro";
 import PageHeader from "../components/PageHeader.astro";
+import ContactForm from "../components/preact/ContactForm";
 import "../styles/global.css";
 ---
 
@@ -14,14 +15,31 @@ import "../styles/global.css";
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>Astro Basics</title>
+
+		<!-- Theme Switcher -->
+		<script>
+			(() => {
+				const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+				const storedTheme = localStorage.getItem("theme");
+
+				const theme =
+				storedTheme === "dark" || (!storedTheme && prefersDark) ? "dark" : "light";
+
+				document.documentElement.setAttribute("data-theme", theme);
+			})();
+		</script>
+		<!-- Theme Switcher -->
 	</head>
 	<body>
+		<ContactForm client:only="preact" />
 		<PageFrame />
 		<PageHeader />
 		<PageContent>
 				<slot />
 		</PageContent>
 		<PageFooter />
+		
+		<!-- LayoutFrame Fader -->
 		<script>
 			const observer = new IntersectionObserver(
 				(entries) => {
@@ -42,5 +60,7 @@ import "../styles/global.css";
 				observer.observe(el)
 			);
 		</script>
+		<script src="https://kit.fontawesome.com/1aad4926f4.js" crossorigin="anonymous"></script>
+		<!-- LayoutFrame Fader -->
 	</body>
 </html>

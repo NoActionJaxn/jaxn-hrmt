@@ -1,7 +1,6 @@
-import type { FC } from "preact/compat";
 import { useState } from "preact/hooks";
 import classNames from "classnames";
-import useScrambledText from "./hooks/useScrambledText";
+import useScrambledText from "./hooks/useScrambleTransition";
 import { ROUTES } from "../../constants/routes";
 
 const INITIAL_TEXT = "jaxnhrmt";
@@ -11,18 +10,18 @@ type AnimatedLogoProps = {
   className?: string;
 };
 
-const AnimatedLogo: FC<AnimatedLogoProps> = ({
-  className = ""
-}) => {
+export default function AnimatedLogo({
+  className
+}: AnimatedLogoProps) {
   const [text, setText] = useState(INITIAL_TEXT);
 
   const title = useScrambledText(text);
 
   return (
-    <div>
+    <div class="inline-block w-min">
       <a
         href={ROUTES.index.path()}
-        className={classNames("text-gruvbox-fg0 uppercase font-black", className)}
+        className={classNames("uppercase font-black whitespace-nowrap", className)}
         onMouseEnter={() => setText(HOVERED_TEXT)}
         onMouseLeave={() => setText(INITIAL_TEXT)}
       >
@@ -31,5 +30,3 @@ const AnimatedLogo: FC<AnimatedLogoProps> = ({
     </div>
   );
 }
-
-export default AnimatedLogo;
