@@ -1,0 +1,67 @@
+@theme {
+  --font-oswald: "Oswald", sans-serif;
+  --font-quicksand: "Quicksand", sans-serif;
+  --default-font-family: var(--font-quicksand);
+
+  --color-gruvbox-bg0: #FFFFFC;
+  --color-gruvbox-bg1: #fdfbe6;
+  --color-gruvbox-bg2: #fbf1c7;
+  --color-gruvbox-bg3: #ebdbb2;
+  --color-gruvbox-bg4: #d5c4a1;
+  --color-gruvbox-bg5: #bdae93;
+  --color-gruvbox-bg6: #a89984;
+  --color-gruvbox-fg0: #1d2021;
+  --color-gruvbox-fg1: #282828;
+  --color-gruvbox-fg2: #3c3836;
+  --color-gruvbox-fg3: #504945;
+  --color-gruvbox-fg4: #665c54;
+  --color-gruvbox-fg5: #7c6f64;
+  --color-gruvbox-red: #cc241d;
+  --color-gruvbox-red-alt: #fb4934;
+  --color-gruvbox-green: #98971a;
+  --color-gruvbox-green-alt: #b8bb26;
+  --color-gruvbox-yellow: #d79921;
+  --color-gruvbox-yellow-alt: #fabd2f;
+  --color-gruvbox-blue: #458588;
+  --color-gruvbox-blue-alt: #83a598;
+  --color-gruvbox-purple: #b16286;
+  --color-gruvbox-purple-alt: #d3869b;
+  --color-gruvbox-aqua: #689d6a;
+  --color-gruvbox-aqua-alt: #8ec07c;
+  --color-gruvbox-orange: #d65d0e;
+  --color-gruvbox-orange-alt: #fe8019;
+  --color-gruvbox-gray: #a89984;
+}
+
+@layer base {
+  [data-theme="dark"] {
+    --color-gruvbox-bg0: #151616;
+    --color-gruvbox-bg1: #1d2021;
+    --color-gruvbox-bg2: #282828;
+    --color-gruvbox-bg3: #3c3836;
+    --color-gruvbox-bg4: #504945;
+    --color-gruvbox-bg5: #665c54;
+    --color-gruvbox-bg6: #7c6f64;
+    --color-gruvbox-fg0: #fdfbe6;
+    --color-gruvbox-fg1: #fbf1c7;
+    --color-gruvbox-fg2: #ebdbb2;
+    --color-gruvbox-fg3: #d5c4a1;
+    --color-gruvbox-fg4: #bdae93;
+    --color-gruvbox-fg5: #a89984;
+    --color-gruvbox-red: #fb4934;
+    --color-gruvbox-red-alt: #cc241d;
+    --color-gruvbox-green: #b8bb26;
+    --color-gruvbox-green-alt: #98971a;
+    --color-gruvbox-yellow: #fabd2f;
+    --color-gruvbox-yellow-alt: #d79921;
+    --color-gruvbox-blue: #83a598;
+    --color-gruvbox-blue-alt: #458588;
+    --color-gruvbox-purple: #d3869b;
+    --color-gruvbox-purple-alt: #b16286;
+    --color-gruvbox-aqua: #8ec07c;
+    --color-gruvbox-aqua-alt: #689d6a;
+    --color-gruvbox-orange: #fe8019;
+    --color-gruvbox-orange-alt: #d65d0e;
+    --color-gruvbox-gray: #a89984;
+  }
+}
