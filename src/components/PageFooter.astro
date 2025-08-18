@@ -1,4 +1,10 @@
 ---
+import fetchApi from "../lib/strapi"
+import {type StrapiResponse, type SocialNetwork} from "../types/strapi";
+
+const socialNetworks = await fetchApi<StrapiResponse<SocialNetwork>>({
+  endpoint: "/social-networks",
+});
 ---
 
 <footer>
@@ -6,8 +12,13 @@
     <div />
     <nav class="text-sm">
       <ul class="flex space-x-4">
-        <li><a href="/privacy" class="hover:underline">Privacy Policy</a></li>
-        <li><a href="/terms" class="hover:underline">Terms of Service</a></li>
+        {socialNetworks.data.map((network) => (
+          <li>
+            <a href={network.url} aria-label={network.title} target="_blank" rel="noopener noreferrer" class="hover:underline">
+              <i class={network.icon}></i> 
+            </a>
+          </li>
+        ))}
       </ul>
     </nav>
   </div>

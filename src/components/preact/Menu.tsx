@@ -9,23 +9,19 @@ export default function Menu () {
   }, []);
   
   return (
-    <nav class="px-2 py-1 inline-block">
-      <ul class="space-x-4 text-sm font-bold font-gnuolane tracking-wider">
+    <nav class="px-2 py-1 inline-block space-x-4 font-gnuolane font-bold tracking-wider text-sm">
+      <ul class="inline space-x-4">
         {Object.entries(ROUTES).map(([_, route]) => (
           <li class="inline">
             <a href={route.path()} class="hover:underline">
               {route.label}
             </a>
           </li>
-        ))}
-
-        {/* Toggle contact form */}
-        <li class="inline">
-          <a href="#" onClick={handleToggleContact} class="hover:underline">
-            Business Inquiries
-          </a>
-        </li>
+        ))}        
       </ul>
+      <button type="button" onClick={handleToggleContact} class="inline-block hover:underline bg-transparent border-0 p-0 font-inherit cursor-pointer">
+        Business Inquiries
+      </button>
     </nav>
   );
 }
