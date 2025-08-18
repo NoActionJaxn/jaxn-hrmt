@@ -1,0 +1,77 @@
+---
+import { StrapiBlocks } from "@sensinum/astro-strapi-blocks";
+import StrapiImage from "../../components/StrapiImage.astro";
+import Layout from "../../layouts/Layout.astro";
+import LayoutFrame from "../../layouts/LayoutFrame.astro";
+import { fetchAllBlogPosts } from "../../lib/requests";
+import type { BlogPost, StrapiEntity } from "../../types/strapi";
+import Tag from "../../components/Tag.astro";
+import { LOCALE, LOCALE_FORMAT_OPTIONS } from "../../constants/dateLocale";
+
+export async function getStaticPaths() {
+  const blogPosts = await fetchAllBlogPosts();
+
+  return blogPosts.data.map((post) => ({
+    params: { slug: post.slug },
+    props: post,
+  }));
+}
+
+type Props = StrapiEntity<BlogPost>;
+
+const {
+  title,
+  slug,
+  coverImage,
+  content,
+  createdAt,
+  updatedAt,
+  tags = [],
+} = Astro.props;
+
+const isUpdated = createdAt !== updatedAt;
+---
+
+<Layout>
+  <LayoutFrame>
+    <article class="space-y-6 col-span-3">
+      <div class="text-[12px] text-gruvbox-fg5 space-y-2">
+        <h2 class="text-6xl tracking-wide font-gnuolane font-bold uppercase">
+          {title}
+        </h2>
+        {
+          isUpdated ? (
+            <p>
+              Last Updated{" "}
+              {new Date(updatedAt).toLocaleDateString(
+                LOCALE,
+                LOCALE_FORMAT_OPTIONS,
+              )}
+            </p>
+          ) : (
+            <p>
+              Published{" "}
+              {new Date(createdAt).toLocaleDateString(
+                LOCALE,
+                LOCALE_FORMAT_OPTIONS,
+              )}
+            </p>
+          )
+        }
+      </div>
+      {
+        coverImage && (
+          <StrapiImage
+            size="medium"
+            image={coverImage?.[0]}
+            className="w-full aspect-video"
+          />
+        )
+      }
+      <StrapiBlocks data={content as any} class="custom-class" />
+      <div class="flex flex-wrap gap-2 mb-4">
+        {tags.map((tag) => <Tag tag={tag} />)}
+      </div>
+    </article>
+  </LayoutFrame>
+</Layout>

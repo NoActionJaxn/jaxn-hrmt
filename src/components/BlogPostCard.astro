@@ -1,7 +1,9 @@
 ---
+import { LOCALE, LOCALE_FORMAT_OPTIONS } from "../constants/dateLocale";
 import { ROUTES } from "../constants/routes";
 import type { BlogPost, StrapiEntity } from "../types/strapi";
 import StrapiImage from "./StrapiImage.astro";
+import Tag from "./Tag.astro";
 
 type Props = {
   blogPost: StrapiEntity<BlogPost>;
@@ -23,32 +25,24 @@ const {
 
 function formattedDate() {
   if (updatedAt !== createdAt) {
-    return `Updated: ${new Date(updatedAt).toLocaleDateString("en", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    })}`;
+    return `Updated: ${new Date(updatedAt).toLocaleDateString(LOCALE, LOCALE_FORMAT_OPTIONS)}`;
   }
   
-  return new Date(createdAt).toLocaleDateString("en", {
-      year: "numeric",
-      month: "long",
-      day: "numeric"
-    });
+  return new Date(createdAt).toLocaleDateString(LOCALE, LOCALE_FORMAT_OPTIONS);
 }
 ---
 
-<div class:list={["w-min h-min block", className]}>
+<div class:list={["block", className]}>
   <div>
     <p class="text-gruvbox-bg4 text-[12px] p-1">{formattedDate()}</p>
   </div>
   <a 
     href={ROUTES.work.path({ slug: slug })} 
-    class="group block no-underline w-min h-min"
+    class="group block no-underline"
   >
     
     <div
-      class="min-w-[300px] max-w-xs rounded-lg flex flex-col border-2 border-gruvbox-bg2 group-hover:border-gruvbox-blue bg-gruvbox-bg1 shadow-md overflow-hidden"
+      class="rounded-lg flex flex-col border-2 border-gruvbox-bg2 group-hover:border-gruvbox-blue bg-gruvbox-bg1 shadow-md overflow-hidden"
     >
       <StrapiImage
         image={coverImage?.[0]}
@@ -57,7 +51,7 @@ function formattedDate() {
       />
       <div class="p-4 space-y-3">
         <div class="h-5">
-          <h2 class="text-lg font-bold text-gruvbox-fg0">{title}</h2>
+          <h2 class="text-xl font-gnuolane uppercase tracking-wide font-bold text-gruvbox-fg0">{title}</h2>
         </div>
         <div>
           <p class="text-gruvbox-fg5 line-clamp-3">{description}</p>
@@ -67,9 +61,7 @@ function formattedDate() {
             tags && tags.length > 0 && (
               <div class="flex flex-wrap gap-2">
                 {tags.map((tag) => (
-                  <span class="bg-gruvbox-blue text-gruvbox-bg1 text-xs font-semibold px-2.5 py-0.5 rounded">
-                    {tag.name}
-                  </span>
+                  <Tag tag={tag} />
                 ))}
               </div>
             )
