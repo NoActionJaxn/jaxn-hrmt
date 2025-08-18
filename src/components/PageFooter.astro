@@ -1,10 +1,7 @@
 ---
-import fetchApi from "../lib/strapi"
-import {type StrapiResponse, type SocialNetwork} from "../types/strapi";
+import { fetchAllSocialNetworks } from "../lib/requests"
 
-const socialNetworks = await fetchApi<StrapiResponse<SocialNetwork>>({
-  endpoint: "/social-networks",
-});
+const socialNetworks = await fetchAllSocialNetworks();
 ---
 
 <footer>

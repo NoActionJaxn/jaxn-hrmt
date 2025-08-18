@@ -7,17 +7,56 @@ export interface StrapiMeta {
   };
 }
 
-export interface StrapiResponse<T> {
-  data: Array<
-    T & {
-      id: number;
-      createdAt: string;  // usually comes as ISO string, not Date
-      updatedAt: string;
-      publishedAt: string;
-    }
-  >;
-  meta?: StrapiMeta;
+export type StrapiEntity<T> = T & {
+  id: number;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
 };
+
+export interface StrapiImageEntity {
+  name: string;
+  hash: string;
+  ext: string;
+  mime: string;
+  path: string;
+  width: number;
+  height: number;
+  size: number;
+  sizeInBytes: number;
+  url: string;
+}
+
+export interface StrapiImage {
+  id: number;
+  documentId: string;
+  alternativeText: string;
+  caption: string;
+  width: number;
+  height: number;
+  formats: {
+    thumbnail: StrapiImageEntity;
+    small: StrapiImageEntity;
+    medium: StrapiImageEntity;
+    large: StrapiImageEntity;
+  };
+  hash: string;
+  ext: string;
+  mime: string;
+  size: number;
+  sizeInBytes: number;
+  url: string;
+}
+
+export interface StrapiCollectionResponse<T> {
+  data: StrapiEntity<T>[];
+  meta?: StrapiMeta;
+}
+
+export interface StrapiSingleResponse<T> {
+  data: StrapiEntity<T>;
+  meta?: StrapiMeta;
+}
 
 export interface SocialNetwork {
   title: string;
@@ -32,11 +71,9 @@ export interface Tag {
 
 export interface BlogPost {
   title: string;
+  description: string;
   slug: string;
   tags?: Tag[];
-  thumbnail?: {
-    url: string;
-    alternativeText?: string;
-  };
-  content?: string;
+  coverImage?: StrapiImage[];
+  content?: JSON;
 }

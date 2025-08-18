@@ -1,21 +1,19 @@
 ---
-import { Debug } from 'astro:components';
 import Layout from '../../layouts/Layout.astro';
 import LayoutFrame from '../../layouts/LayoutFrame.astro';
-import fetchApi from '../../lib/strapi';
-import type { BlogPost, StrapiResponse } from '../../types/strapi';
+import BlogPostCard from '../../components/BlogPostCard.astro';
+import { fetchAllBlogPosts } from '../../lib/requests';
 
-const blogPosts = await fetchApi<StrapiResponse<BlogPost>>({
-  endpoint: "/blog-posts?populate=tags",
-});
+const blogPosts = await fetchAllBlogPosts();
 ---
 
-
-<Debug answer={blogPosts} />
 <Layout>
   <LayoutFrame>
-	<div class="flex items-center justify-center w-full h-full">
-		<span>This is the work page</span>
-	</div>
+    <div 
+    class="columns-1 sm:columns-1 md:columns-2 lg:columns-3 xl:columns-4 2xl:columns-5 3xl:col-end-6 space-y-4 w-full h-full"> 
+      {blogPosts.data.map(post => (
+        <BlogPostCard blogPost={post} className="break-inside-avoid" />
+      ))}
+    </div>
   </LayoutFrame>
 </Layout>

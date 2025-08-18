@@ -1,0 +1,33 @@
+---
+import { Image } from "astro:assets";
+import type { StrapiImage } from "../types/strapi";
+
+type Props = {
+  image?: StrapiImage;
+  className?: string;
+  size?: keyof StrapiImage["formats"];
+};
+
+const { image, className = "h-48", size = "small" } = Astro.props;
+
+const imageObj = image?.formats[size];
+
+const imageUrl = `${import.meta.env.STRAPI_URL}${imageObj?.url}`;
+---
+
+<div
+  class:list={["bg-black overflow-hidden", !imageObj && "hidden", className]}
+>
+  {
+    imageObj && (
+      <Image
+        src={imageUrl}
+        alt={imageObj?.name || "Strapi Image"}
+        class="h-full w-full object-cover"
+        width={imageObj?.width}
+        height={imageObj?.height}
+        loading="lazy"
+      />
+    )
+  }
+</div>

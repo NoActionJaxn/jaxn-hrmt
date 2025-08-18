@@ -36,7 +36,6 @@ export default async function fetchApi<T>({
       'Content-Type': 'application/json',
     },
   });
-  
   let data = await res.json();
 
   if (wrappedByKey) {
