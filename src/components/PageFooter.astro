@@ -14,8 +14,9 @@ const socialNetworks = await fetchApi<StrapiResponse<SocialNetwork>>({
       <ul class="flex space-x-4">
         {socialNetworks.data.map((network) => (
           <li>
-            <a href={network.url} aria-label={network.title} target="_blank" rel="noopener noreferrer" class="hover:underline">
+            <a href={network.url} target="_blank" rel="noopener noreferrer" class="hover:underline">
               <i class={network.icon}></i> 
+              <span class="sr-only">{network.title}</span>
             </a>
           </li>
         ))}

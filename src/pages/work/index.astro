@@ -1,8 +1,17 @@
 ---
+import { Debug } from 'astro:components';
 import Layout from '../../layouts/Layout.astro';
 import LayoutFrame from '../../layouts/LayoutFrame.astro';
+import fetchApi from '../../lib/strapi';
+import type { BlogPost, StrapiResponse } from '../../types/strapi';
+
+const blogPosts = await fetchApi<StrapiResponse<BlogPost>>({
+  endpoint: "/blog-posts?populate=tags",
+});
 ---
 
+
+<Debug answer={blogPosts} />
 <Layout>
   <LayoutFrame>
 	<div class="flex items-center justify-center w-full h-full">

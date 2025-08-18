@@ -7,7 +7,7 @@ export const ROUTES: Record<string, Route> = {
   },
   work: { 
     label: "Work", 
-    path: () => "/work"
+    path: (params?: { slug: string }) => params?.slug ? "/work" : `/work/${params?.slug}`
   },
   about: { 
     label: "About", 

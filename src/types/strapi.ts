@@ -24,3 +24,19 @@ export interface SocialNetwork {
   url: string;
   icon: string;
 }
+
+export interface Tag {
+  name: string;
+  slug: string;
+}
+
+export interface BlogPost {
+  title: string;
+  slug: string;
+  tags?: Tag[];
+  thumbnail?: {
+    url: string;
+    alternativeText?: string;
+  };
+  content?: string;
+}
