@@ -1,9 +1,9 @@
 ---
-import { LOCALE, LOCALE_FORMAT_OPTIONS } from "../constants/dateLocale";
-import { ROUTES } from "../constants/routes";
-import type { BlogPost, StrapiEntity } from "../types/strapi";
-import StrapiImage from "./StrapiImage.astro";
-import Tag from "./Tag.astro";
+import StrapiImage from "../shared/StrapiImage.astro";
+import Tag from "../shared/Tag.astro";
+import { formatDate } from "../../lib/helpers";
+import type { BlogPost, StrapiEntity } from "../../types/strapi";
+import { ROUTES } from "../../constants/routes";
 
 type Props = {
   blogPost: StrapiEntity<BlogPost>;
@@ -25,28 +25,27 @@ const {
 
 function formattedDate() {
   if (updatedAt !== createdAt) {
-    return `Updated: ${new Date(updatedAt).toLocaleDateString(LOCALE, LOCALE_FORMAT_OPTIONS)}`;
+    return `Updated - ${formatDate(new Date(updatedAt))}`;
   }
   
-  return new Date(createdAt).toLocaleDateString(LOCALE, LOCALE_FORMAT_OPTIONS);
+  return formatDate(new Date(createdAt));
 }
 ---
 
 <div class:list={["block", className]}>
   <div>
-    <p class="text-gruvbox-bg4 text-[12px] p-1">{formattedDate()}</p>
+    <p class="text-gruvbox-bg4 text-[12px] p-1 select-none">{formattedDate()}</p>
   </div>
   <a 
     href={ROUTES.work.path({ slug: slug })} 
     class="group block no-underline"
   >
-    
     <div
       class="rounded-lg flex flex-col border-2 border-gruvbox-bg2 group-hover:border-gruvbox-blue bg-gruvbox-bg1 shadow-md overflow-hidden"
     >
       <StrapiImage
         image={coverImage?.[0]}
-        className="h-40 object-cover"
+        className="h-40 aspect-video"
         size="small"
       />
       <div class="p-4 space-y-3">

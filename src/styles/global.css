@@ -8,6 +8,10 @@
   }
 
   html, body {
-    @apply w-screen min-h-screen bg-gruvbox-bg0 text-gruvbox-fg0 font-proximanova font-light;
+    @apply w-screen min-h-screen;
+  }
+
+  body {
+    @apply bg-gruvbox-bg0 text-gruvbox-fg0 font-proximanova font-light;
   }
 }

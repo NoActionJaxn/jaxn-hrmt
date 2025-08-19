@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-import type { StrapiImage } from "../types/strapi";
+import type { StrapiImage } from "../../types/strapi";
 
 type Props = {
   image?: StrapiImage;
@@ -26,7 +26,7 @@ const imageUrl = `${import.meta.env.STRAPI_URL}${imageObj?.url}`;
         class="h-full w-full object-cover"
         width={imageObj?.width}
         height={imageObj?.height}
-        loading="lazy"
+        loading="eager"
       />
     )
   }

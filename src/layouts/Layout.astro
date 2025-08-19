@@ -1,8 +1,8 @@
 ---
-import PageContent from "../components/PageContent.astro";
-import PageFooter from "../components/PageFooter.astro";
-import PageFrame from "../components/PageFrame.astro";
-import PageHeader from "../components/PageHeader.astro";
+import PageContent from "../components/page/PageContent.astro";
+import PageFooter from "../components/page/PageFooter.astro";
+import PageFrame from "../components/page/PageFrame.astro";
+import PageHeader from "../components/page/PageHeader.astro";
 import ContactForm from "../components/preact/ContactForm";
 import "../styles/global.css";
 ---
@@ -29,6 +29,7 @@ import "../styles/global.css";
 			})();
 		</script>
 		<!-- Theme Switcher -->
+		 
 	</head>
 	<body>
 		<ContactForm client:only="preact" />

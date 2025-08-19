@@ -1,12 +1,12 @@
 ---
 import { StrapiBlocks } from "@sensinum/astro-strapi-blocks";
-import StrapiImage from "../../components/StrapiImage.astro";
 import Layout from "../../layouts/Layout.astro";
 import LayoutFrame from "../../layouts/LayoutFrame.astro";
+import StrapiImage from "../../components/shared/StrapiImage.astro";
+import Tag from "../../components/shared/Tag.astro";
 import { fetchAllBlogPosts } from "../../lib/requests";
 import type { BlogPost, StrapiEntity } from "../../types/strapi";
-import Tag from "../../components/Tag.astro";
-import { LOCALE, LOCALE_FORMAT_OPTIONS } from "../../constants/dateLocale";
+import { formatDate } from "../../lib/helpers";
 
 export async function getStaticPaths() {
   const blogPosts = await fetchAllBlogPosts();
@@ -21,7 +21,6 @@ type Props = StrapiEntity<BlogPost>;
 
 const {
   title,
-  slug,
   coverImage,
   content,
   createdAt,
@@ -43,18 +42,12 @@ const isUpdated = createdAt !== updatedAt;
           isUpdated ? (
             <p>
               Last Updated{" "}
-              {new Date(updatedAt).toLocaleDateString(
-                LOCALE,
-                LOCALE_FORMAT_OPTIONS,
-              )}
+              {formatDate(new Date(updatedAt))}
             </p>
           ) : (
             <p>
               Published{" "}
-              {new Date(createdAt).toLocaleDateString(
-                LOCALE,
-                LOCALE_FORMAT_OPTIONS,
-              )}
+              {formatDate(new Date(createdAt))}
             </p>
           )
         }

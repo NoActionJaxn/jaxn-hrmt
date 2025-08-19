@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import LayoutFrame from '../../layouts/LayoutFrame.astro';
-import BlogPostCard from '../../components/BlogPostCard.astro';
+import BlogPostCard from '../../components/blog/BlogPostCard.astro';
 import { fetchAllBlogPosts } from '../../lib/requests';
 
 const blogPosts = await fetchAllBlogPosts();
@@ -9,8 +9,10 @@ const blogPosts = await fetchAllBlogPosts();
 
 <Layout>
   <LayoutFrame>
-    <div 
-    class="columns-1 sm:columns-1 md:columns-2 lg:columns-3 xl:columns-4 2xl:columns-5 3xl:col-end-6 space-y-4 w-full h-full"> 
+    <div>
+      
+    </div>
+    <div  class="columns-xs gap-10 space-y-10 w-full h-full overflow-x-auto"> 
       {blogPosts.data.map(post => (
         <BlogPostCard blogPost={post} className="break-inside-avoid" />
       ))}

@@ -1,0 +1,15 @@
+---
+import type { Tag } from "../../types/strapi";
+
+type Props = {
+  tag: Tag;
+};
+
+const { tag } = Astro.props;
+---
+
+<span
+  class="bg-gruvbox-blue text-gruvbox-bg0 text-xs font-semibold px-2.5 py-0.5 rounded"
+>
+  {tag.name}
+</span>
