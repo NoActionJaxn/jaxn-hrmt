@@ -1,7 +1,7 @@
 ---
-import { fetchAllSocialNetworks } from "../../lib/requests"
+import { fetchSocialNetworksPaginated } from "../../lib/requests"
 
-const socialNetworks = await fetchAllSocialNetworks();
+const socialNetworks = await fetchSocialNetworksPaginated({});
 ---
 
 <footer>

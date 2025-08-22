@@ -4,12 +4,12 @@ import Layout from "../../layouts/Layout.astro";
 import LayoutFrame from "../../layouts/LayoutFrame.astro";
 import StrapiImage from "../../components/shared/StrapiImage.astro";
 import Tag from "../../components/shared/Tag.astro";
-import { fetchAllBlogPosts } from "../../lib/requests";
+import { fetchBlogPostsPaginated } from "../../lib/requests";
 import type { BlogPost, StrapiEntity } from "../../types/strapi";
 import { formatDate } from "../../lib/helpers";
 
 export async function getStaticPaths() {
-  const blogPosts = await fetchAllBlogPosts();
+  const blogPosts = await fetchBlogPostsPaginated({});
 
   return blogPosts.data.map((post) => ({
     params: { slug: post.slug },
