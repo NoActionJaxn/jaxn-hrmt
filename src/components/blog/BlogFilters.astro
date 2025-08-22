@@ -1,0 +1,122 @@
+---
+import { fetchAllTagsPaginated } from "../../lib/requests";
+import TagFilter from "../preact/TagFilter";
+
+const tags = await fetchAllTagsPaginated();
+---
+
+<details
+  class="group rounded-md bg-gruvbox-bg1"
+  open
+>
+  <summary
+    class="cursor-pointer px-6 py-3 flex items-center justify-between text-lg font-gnuolane uppercase tracking-wider rounded-md bg-gruvbox-bg1 group-open:rounded-b-none"
+  >
+    Filters
+    <div
+      class="flex items-center size-6 justify-center transition-transform group-open:rotate-180"
+    >
+      <i class="fa-solid fa-chevron-down text-sm"></i>
+    </div>
+  </summary>
+
+  <div class="grid grid-cols-8 gap-x-10 min-h-48 px-6 pb-12 pt-2">
+    <!-- Post Types -->
+    <div class="space-y-1 col-span-2">
+      <div class="h-8">
+        <h3 class="font-gnuolane uppercase tracking-wider">Post Types</h3>
+      </div>
+      <div class="space-y-1">
+        <div>
+          <input
+            type="checkbox"
+            id="projects"
+            name="projects"
+            value="projects"
+            checked
+            disabled
+          />
+          <label for="projects" class="ml-2 text-gruvbox-fg2 text-sm"
+            >Projects</label
+          >
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="blog-posts"
+            name="blog-posts"
+            value="blog-posts"
+            checked
+            disabled
+          />
+          <label for="blog-posts" class="ml-2 text-gruvbox-fg2 text-sm"
+            >Blog Posts</label
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- Sort Order -->
+    <div class="space-y-1 col-span-2">
+      <div class="h-8">
+        <h3 class="font-gnuolane uppercase tracking-wider">Sort Order</h3>
+      </div>
+      <div class="space-y-1">
+        <div>
+          <input
+            type="radio"
+            id="sort-newest"
+            name="sort-order"
+            value="newest"
+            checked
+          />
+          <label for="sort-newest" class="ml-2 text-gruvbox-fg2 text-sm"
+            >Newest</label
+          >
+        </div>
+        <div>
+          <input
+            type="radio"
+            id="sort-oldest"
+            name="sort-order"
+            value="oldest"
+          />
+          <label for="sort-oldest" class="ml-2 text-gruvbox-fg2 text-sm"
+            >Oldest</label
+          >
+        </div>
+        <div>
+          <input
+            type="radio"
+            id="sort-popular"
+            name="sort-order"
+            value="popular"
+          />
+          <label for="sort-popular" class="ml-2 text-gruvbox-fg2 text-sm"
+            >Most Popular</label
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- Tags -->
+    <div class="flex flex-col gap-2 col-span-3">
+      <div class="h-10">
+        <h3 class="font-gnuolane uppercase tracking-wider">Tags</h3>
+      </div>
+      <TagFilter tags={tags} client:only="preact" />
+    </div>
+
+    <!-- Reset Button -->
+    <div class="col-span-1 space-y-2">
+      <div class="h-10"></div>
+      <button
+        type="button"
+        class="cursor-pointer border-2 rounded-sm pl-3 pr-2.5 h-8.5 font-bold text-sm text-gruvbox-bg0 bg-gruvbox-blue-alt hover:bg-gruvbox-blue border-gruvbox-blue"
+      >
+        Reset Filters
+        <i class="fa-solid fa-rotate-right ml-2"></i>
+      </button>
+    </div>
+  </div>
+</details>

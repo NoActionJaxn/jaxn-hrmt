@@ -12,7 +12,7 @@ export default function ContactForm() {
   if (!isOpen) return null;
 
   return (
-    <div ref={ref} class="fixed z-50 right-0 bottom-28 p-4 w-sm bg-gruvbox-bg2">
+    <div ref={ref} class="fixed border-2 border-r-0 border-gruvbox-bg2 z-50 right-0 bottom-30 rounded-l-md shadow p-4 w-sm bg-gruvbox-bg2">
       <div className="flex justify-between items-center">
         <div>
           <h2 class="text-2xl font-gnuolane uppercase">Business Inquiries</h2>
@@ -22,15 +22,15 @@ export default function ContactForm() {
           <button 
             type="button" 
             onClick={closeContact} 
-            className="cursor-pointer size-6 text-sm rounded-sm text-gruvbox-bg0 bg-gruvbox-fg0 hover:bg-gruvbox-fg2"
+            className="cursor-pointer size-6 text-sm rounded-sm text-gruvbox-fg1"
           >
-            X
+            <i class="fa fa-times" aria-hidden="true"></i>
           </button>
         </div>
       </div>
       
       <form class="space-y-4 mt-4" action="#" method="post">
-        <div>
+        <div class="space-y-2">
           <label for="firstName" class="block text-sm font-medium text-gruvbox-fg0">
             First Name
           </label>
@@ -38,12 +38,12 @@ export default function ContactForm() {
             type="text" 
             name="firstName" 
             id="firstName" 
-            class="mt-1 p-2 block w-full border border-gruvbox-fg0 shadow-sm focus:ring-gruvbox-blue focus:border-gruvbox-blue sm:text-sm bg-gruvbox-bg0 text-gruvbox-fg0" 
+            class="h-8.5 px-2 w-full font-proximanova rounded-sm border shadow-sm outline-none focus:ring-4 border-gruvbox-bg5 bg-gruvbox-bg2 ring-gruvbox-blue placeholder:text-gruvbox-bg5 text-gruvbox-fg2" 
             required 
           />
         </div>
 
-        <div>
+        <div class="space-y-2">
           <label for="lastName" class="block text-sm font-medium text-gruvbox-fg0">
             Last Name
           </label>
@@ -51,12 +51,12 @@ export default function ContactForm() {
             type="text" 
             name="lastName" 
             id="lastName" 
-            class="mt-1 p-2 block w-full border border-gruvbox-fg0 shadow-sm focus:ring-gruvbox-blue focus:border-gruvbox-blue sm:text-sm bg-gruvbox-bg0 text-gruvbox-fg0" 
+            class="h-8.5 px-2 w-full font-proximanova rounded-sm border shadow-sm outline-none focus:ring-4 border-gruvbox-bg5 bg-gruvbox-bg2 ring-gruvbox-blue placeholder:text-gruvbox-bg5 text-gruvbox-fg2" 
             required 
           />
         </div>
 
-        <div>
+        <div class="space-y-2">
           <label for="email" class="block text-sm font-medium text-gruvbox-fg0">
             Email Address
           </label>
@@ -64,24 +64,24 @@ export default function ContactForm() {
             type="email" 
             name="email" 
             id="email" 
-            class="mt-1 p-2 block w-full border border-gruvbox-fg0 shadow-sm focus:ring-gruvbox-blue focus:border-gruvbox-blue sm:text-sm bg-gruvbox-bg0 text-gruvbox-fg0" 
+            class="h-8.5 px-2 w-full font-proximanova rounded-sm border shadow-sm outline-none focus:ring-4 border-gruvbox-bg5 bg-gruvbox-bg2 ring-gruvbox-blue placeholder:text-gruvbox-bg5 text-gruvbox-fg2" 
             required 
           />
         </div>
 
-        <div>
+        <div class="space-y-2">
           <label for="message" class="block text-sm font-medium text-gruvbox-fg0">Content</label>
           <textarea 
             name="message" 
             id="message"
-            class="mt-1 p-2 block w-full border border-gruvbox-fg0 shadow-sm focus:ring-gruvbox-blue focus:border-gruvbox-blue sm:text-sm bg-gruvbox-bg0 text-gruvbox-fg0"
+            class="p-2 w-full font-proximanova rounded-sm border shadow-sm outline-none focus:ring-4 border-gruvbox-bg5 bg-gruvbox-bg2 ring-gruvbox-blue placeholder:text-gruvbox-bg5 text-gruvbox-fg2"
             rows={8}
             required 
           />
         </div>
 
         <div>
-          <button type="submit" class="inline-flex justify-center py-2 px-4 w-full border border-transparent shadow-sm text-base font-black uppercase text-gruvbox-bg0 bg-gruvbox-blue hover:bg-gruvbox-blue-alt focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gruvbox-blue">
+          <button type="submit" class="cursor-pointer border-2 rounded-sm pl-3 pr-2.5 h-10 w-full font-bold text-sm text-gruvbox-bg0 bg-gruvbox-blue-alt hover:bg-gruvbox-blue border-gruvbox-blue">
             Send
           </button>
         </div>
