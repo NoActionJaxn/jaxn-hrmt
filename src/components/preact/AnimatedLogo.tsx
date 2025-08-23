@@ -21,7 +21,7 @@ export default function AnimatedLogo({
     <div class="inline-block w-min">
       <a
         href={ROUTES.index.path()}
-        className={classNames("uppercase font-black whitespace-nowrap", className)}
+        class={classNames("uppercase font-black whitespace-nowrap", className)}
         onMouseEnter={() => setText(HOVERED_TEXT)}
         onMouseLeave={() => setText(INITIAL_TEXT)}
       >

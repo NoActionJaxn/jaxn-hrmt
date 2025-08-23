@@ -8,12 +8,12 @@ export default function ThemeSelector() {
       type="button"
       id="theme-selector"
       onClick={toggleTheme}
-      className="p-2 aspect-square rounded inline-block cursor-pointer text-sm"
+      class="p-2 aspect-square rounded inline-block cursor-pointer text-sm"
     >
         {theme === "dark" ? (
-            <i className="fa-solid fa-sun" />
+            <i class="fa-solid fa-sun" />
         ) : (
-            <i className="fa-solid fa-moon" />
+            <i class="fa-solid fa-moon" />
         )}
     </button>
   );

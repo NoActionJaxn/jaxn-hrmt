@@ -16,7 +16,7 @@ const blogPosts = await fetchBlogPostsPaginated({});
         class="grow columns-xs pb-5 gap-14 space-y-10 w-full h-full overflow-x-auto"
       >
         {
-          blogPosts.data.map((post) => (
+          blogPosts?.data?.map((post) => (
             <BlogPostCard blogPost={post} className="break-inside-avoid" />
           ))
         }

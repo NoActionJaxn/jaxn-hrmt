@@ -13,7 +13,7 @@ export default function ContactForm() {
 
   return (
     <div ref={ref} class="fixed border-2 border-r-0 border-gruvbox-bg2 z-50 right-0 bottom-30 rounded-l-md shadow p-4 w-sm bg-gruvbox-bg2">
-      <div className="flex justify-between items-center">
+      <div class="flex justify-between items-center">
         <div>
           <h2 class="text-2xl font-gnuolane uppercase">Business Inquiries</h2>
         </div>
@@ -22,7 +22,7 @@ export default function ContactForm() {
           <button 
             type="button" 
             onClick={closeContact} 
-            className="cursor-pointer size-6 text-sm rounded-sm text-gruvbox-fg1"
+            class="cursor-pointer size-6 text-sm rounded-sm text-gruvbox-fg1"
           >
             <i class="fa fa-times" aria-hidden="true"></i>
           </button>

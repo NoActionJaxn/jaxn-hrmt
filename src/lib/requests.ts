@@ -49,8 +49,8 @@ export async function fetchAllTagsPaginated() {
       },
     });
 
-    allTags = allTags.concat(response.data.map(tag => tag));
-    total = response.meta?.pagination?.total ?? 0;
+    allTags = allTags.concat(response?.data?.map(tag => tag));
+    total = response?.meta?.pagination?.total ?? 0;
     page++;
   } while (allTags.length < total);
 

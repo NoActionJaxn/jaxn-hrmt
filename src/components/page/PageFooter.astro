@@ -9,7 +9,7 @@ const socialNetworks = await fetchSocialNetworksPaginated({});
     <div />
     <nav class="text-sm">
       <ul class="flex space-x-4">
-        {socialNetworks.data.map((network) => (
+        {socialNetworks?.data?.map((network) => (
           <li>
             <a href={network.url} target="_blank" rel="noopener noreferrer" class="hover:underline">
               <i class={network.icon}></i> 

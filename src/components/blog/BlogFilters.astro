@@ -20,7 +20,7 @@ const tags = await fetchAllTagsPaginated();
     </div>
   </summary>
 
-  <div class="grid grid-cols-8 gap-x-10 min-h-48 px-6 pb-12 pt-2">
+  <div class="grid grid-cols-12 gap-x-10 min-h-48 px-6 pb-12 pt-2">
     <!-- Post Types -->
     <div class="space-y-1 col-span-2">
       <div class="h-8">
@@ -100,7 +100,7 @@ const tags = await fetchAllTagsPaginated();
     </div>
 
     <!-- Tags -->
-    <div class="flex flex-col gap-2 col-span-3">
+    <div class="flex flex-col gap-2 col-span-6">
       <div class="h-10">
         <h3 class="font-gnuolane uppercase tracking-wider">Tags</h3>
       </div>
@@ -108,11 +108,9 @@ const tags = await fetchAllTagsPaginated();
     </div>
 
     <!-- Reset Button -->
-    <div class="col-span-1 space-y-2">
+    <div class="col-span-2 space-y-2">
       <div class="h-10"></div>
-      <button
-        type="button"
-        class="cursor-pointer border-2 rounded-sm pl-3 pr-2.5 h-8.5 font-bold text-sm text-gruvbox-bg0 bg-gruvbox-blue-alt hover:bg-gruvbox-blue border-gruvbox-blue"
+      <button type="button" class="cursor-pointer border-2 rounded-sm pl-3 pr-2.5 h-8.5 font-bold text-sm text-gruvbox-bg0 bg-gruvbox-blue-alt hover:bg-gruvbox-blue border-gruvbox-blue"
       >
         Reset Filters
         <i class="fa-solid fa-rotate-right ml-2"></i>

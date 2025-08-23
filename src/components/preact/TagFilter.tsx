@@ -17,7 +17,7 @@ export default function TagFilter ({
 
   const visibleTags = useMemo(() => {
     return tags
-      .filter(tag => tag.name.toLowerCase().includes(search.toLowerCase()))
+      .filter(tag => tag?.name?.toLowerCase().includes(search.toLowerCase()))
       .slice(0, 20);
   }, [tags, search]);
 
@@ -35,9 +35,9 @@ export default function TagFilter ({
   };
 
   return (
-    <div className="space-y-2">
-      <div class="flex gap-2">
-        <div class="flex h-8.5 w-full font-proximanova rounded-sm border shadow-sm outline-none focus-within:ring-4 border-gruvbox-bg5 bg-gruvbox-bg2 ring-gruvbox-blue placeholder:text-gruvbox-bg5 text-gruvbox-fg2">
+    <div class="space-y-2">
+    <div class="flex gap-2">
+      <div class="flex h-8.5 w-full font-proximanova rounded-sm border shadow-sm outline-none focus-within:ring-4 border-gruvbox-bg5 bg-gruvbox-bg2 ring-gruvbox-blue placeholder:text-gruvbox-bg5 text-gruvbox-fg2">
           <input
             type="text"
             value={search}
@@ -49,20 +49,20 @@ export default function TagFilter ({
         </div>
         
       </div>
-      <div className="space-x-2 p-0 m-0">
+      <div class="space-x-2 p-0 m-0">
         {visibleTags.map(tag => (
           <button
             type="button"
-            key={tag.slug}
+            key={tag?.slug}
             onClick={() => onChange(tag)}
-            className={classnames(
+            class={classnames(
               'inline-block text-gruvbox-bg0 text-xs font-semibold cursor-pointer px-2.5 py-0.5 rounded',
               isSelected(tag)
                 ? 'bg-gruvbox-blue hover:bg-gruvbox-blue-alt'
                 : 'bg-gruvbox-fg3 hover:bg-gruvbox-fg4'
             )}
           >
-            {tag.name}
+            {tag?.name}
           </button>
         ))}
       </div>

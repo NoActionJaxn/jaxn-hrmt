@@ -11,7 +11,7 @@ import { formatDate } from "../../lib/helpers";
 export async function getStaticPaths() {
   const blogPosts = await fetchBlogPostsPaginated({});
 
-  return blogPosts.data.map((post) => ({
+  return blogPosts?.data?.map((post) => ({
     params: { slug: post.slug },
     props: post,
   }));

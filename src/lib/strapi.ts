@@ -23,7 +23,7 @@ export default async function fetchApi<T>({
     endpoint = endpoint.slice(1);
   }
 
-  const url = new URL(`${import.meta.env.STRAPI_URL}/api/${endpoint}`);
+  const url = new URL(`${import.meta.env.STRAPI_URL ?? 'http://localhost:1337'}/api/${endpoint}`);
 
   if (query) {
     Object.entries(query).forEach(([key, value]) => {
@@ -35,8 +35,14 @@ export default async function fetchApi<T>({
       Authorization: `Bearer ${import.meta.env.STRAPI_TOKEN}`,
       'Content-Type': 'application/json',
     },
-  });
-  let data = await res.json();
+  })
+    .catch((error) => {
+      console.error('Error fetching data from Strapi:', {
+        error
+      });
+    });
+
+  let data = await res?.json();
 
   if (wrappedByKey) {
     data = data[wrappedByKey];

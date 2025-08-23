@@ -9,10 +9,10 @@ export default function Logo({className}: LogoProps) {
     <div>
       <a
         href={ROUTES.index.path()}
-        className="text-gruvbox-fg0 uppercase font-bold"
+        class="text-gruvbox-fg0 uppercase font-bold"
       >
         <span class="space-x-1">
-          <strong className={className}>jaxnhrmt</strong> 
+          <strong class={className}>jaxnhrmt</strong> 
         </span>
       </a>
     </div>
