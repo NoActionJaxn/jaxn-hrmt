@@ -36,11 +36,7 @@ export default async function fetchApi<T>({
       'Content-Type': 'application/json',
     },
   })
-    .catch((error) => {
-      console.error('Error fetching data from Strapi:', {
-        error
-      });
-    });
+    .catch((error) => console.error('Error fetching data from Strapi:', error));
 
   let data = await res?.json();
 

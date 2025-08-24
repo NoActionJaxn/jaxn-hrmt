@@ -1,7 +1,6 @@
 ---
 import PageContent from "../components/page/PageContent.astro";
-import PageFooter from "../components/page/PageFooter.astro";
-import PageFrame from "../components/page/PageFrame.astro";
+import PageBackground from "../components/page/PageBackground.astro";
 import PageHeader from "../components/page/PageHeader.astro";
 import ContactForm from "../components/preact/ContactForm";
 import "../styles/global.css";
@@ -33,12 +32,11 @@ import "../styles/global.css";
 	</head>
 	<body>
 		<ContactForm client:only="preact" />
-		<PageFrame />
+		<PageBackground />
 		<PageHeader />
 		<PageContent>
 				<slot />
 		</PageContent>
-		<PageFooter />
 		
 		<!-- LayoutFrame Fader -->
 		<script>
