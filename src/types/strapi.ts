@@ -14,7 +14,7 @@ export type StrapiEntity<T> = T & {
   publishedAt: string;
 };
 
-export interface StrapiImageEntity {
+export interface StrapiFileEntity {
   name: string;
   hash: string;
   ext: string;
@@ -35,10 +35,10 @@ export interface StrapiImage {
   width: number;
   height: number;
   formats: {
-    thumbnail: StrapiImageEntity;
-    small: StrapiImageEntity;
-    medium: StrapiImageEntity;
-    large: StrapiImageEntity;
+    thumbnail: StrapiFileEntity;
+    small: StrapiFileEntity;
+    medium: StrapiFileEntity;
+    large: StrapiFileEntity;
   };
   hash: string;
   ext: string;
@@ -74,6 +74,14 @@ export interface BlogPost {
   description: string;
   slug: string;
   tags?: Tag[];
-  coverImage?: StrapiImage[];
+  coverImage?: StrapiImage;
   content?: JSON;
+}
+
+export interface AboutPage {
+  title: string;
+  description?: string;
+  biography?: JSON;
+  profileImage?: StrapiImage;
+  CV?: StrapiFileEntity;
 }

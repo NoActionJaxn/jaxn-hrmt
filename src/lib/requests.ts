@@ -1,5 +1,5 @@
 import type { PaginatedRequest } from "../types/requests";
-import type { BlogPost, SocialNetwork, StrapiCollectionResponse, Tag } from "../types/strapi";
+import type { BlogPost, SocialNetwork, StrapiCollectionResponse, StrapiSingleResponse, Tag, AboutPage } from "../types/strapi";
 import fetchApi from "./strapi";
 
 export async function fetchBlogPostsPaginated({ page = 1, pageSize = 10 }: PaginatedRequest) {
@@ -55,4 +55,13 @@ export async function fetchAllTagsPaginated() {
   } while (allTags.length < total);
 
   return allTags;
+}
+
+export async function fetchAboutPage() {
+  return await fetchApi<StrapiSingleResponse<AboutPage>>({
+    endpoint: "about-page",
+    query: {
+      populate: "*",
+    },
+  });
 }

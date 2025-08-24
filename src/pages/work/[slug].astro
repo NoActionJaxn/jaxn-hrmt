@@ -5,8 +5,8 @@ import LayoutFrame from "../../layouts/LayoutFrame.astro";
 import StrapiImage from "../../components/shared/StrapiImage.astro";
 import Tag from "../../components/shared/Tag.astro";
 import { fetchBlogPostsPaginated } from "../../lib/requests";
-import type { BlogPost, StrapiEntity } from "../../types/strapi";
 import { formatDate } from "../../lib/helpers";
+import type { BlogPost, StrapiEntity } from "../../types/strapi";
 
 export async function getStaticPaths() {
   const blogPosts = await fetchBlogPostsPaginated({});
@@ -56,7 +56,7 @@ const isUpdated = createdAt !== updatedAt;
         coverImage && (
           <StrapiImage
             size="medium"
-            image={coverImage?.[0]}
+            image={coverImage}
             className="w-full aspect-video"
           />
         )

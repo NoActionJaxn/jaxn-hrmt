@@ -1,12 +1,58 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import LayoutFrame from '../layouts/LayoutFrame.astro';
+import { StrapiBlocks } from "@sensinum/astro-strapi-blocks";
+import StrapiImage from "../components/shared/StrapiImage.astro";
+import Layout from "../layouts/Layout.astro";
+import LayoutFrame from "../layouts/LayoutFrame.astro";
+import { fetchAboutPage } from "../lib/requests";
+import Debug from "astro/components/Debug.astro";
+
+const aboutPage = await fetchAboutPage();
 ---
 
+<!-- <Debug data={aboutPage} /> -->
 <Layout>
-  <LayoutFrame>
-	<div class="flex items-center justify-center w-full h-full">
-		<span>This is the about page</span>
-	</div>
-  </LayoutFrame>
-</Layout>
+	<LayoutFrame>
+		<div class="w-full h-full flex flex-col gap-12 justify-center items-center px-16">
+			<div class="w-full">
+				<h1 class="text-6xl font-gnuolane font-bold uppercase tracking-wide">
+					{aboutPage?.data?.title}
+				</h1>
+			</div>
+			<div class="flex flex-row gap-8">
+				<div class="flex-1">
+					<StrapiImage
+						size="medium"
+						image={aboutPage?.data?.profileImage}
+						className="h-full"
+					/>
+				</div>
+				<div class="flex-1">
+					{aboutPage?.data?.biography && (
+						<StrapiBlocks data={aboutPage?.data?.biography as any} />
+					)}
+				</div>
+			</div>
+		</div>
+		</LayoutFrame>
+		<LayoutFrame>
+			<div class="w-full h-full flex items-center justify-center">
+				<div class="flex max-w-xl gap-8">
+					<div>
+						<div class="bg-gruvbox-fg0 text-gruvbox-bg0 rounded-md w-min aspect-square flex flex-col items-center justify-center p-8 text-4xl">
+							<i class="fa-solid fa-file-pdf"></i>
+						</div>
+					</div>
+					<div class="space-y-8">
+						<div>{aboutPage?.data?.description}</div>
+						<a
+							href={aboutPage?.data?.CV?.url}
+							class="px-4 py-2 bg-gruvbox-blue text-white rounded-md hover:bg-gruvbox-blue-light transition"
+							download
+						>
+							Download CV
+						</a>
+					</div>
+				</div>
+			</div>
+	</LayoutFrame>
+>
